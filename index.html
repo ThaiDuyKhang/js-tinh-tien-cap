@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp 10 - JS Tính tiền Cáp - Thái Duy Khang </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="tinhtiencap" style="text-align:center;border: 1px solid #ebebeb">
+            <h1 class="title">TÍNH TIỀN CÁP</h1>
+            <form class="form">
+                <div class="form-left">
+                    <p>Mã khách hàng:</p>
+                    <p>Đóng tiền theo hình thức:</p>
+                    <p style="display:none" id="numberConnect">Số kết nối:</p>
+                    <p>Số kênh cao cấp:</p>  
+                </div>
+                <div class="form-right">
+                    <input type="text" id="userID" placeholder="Nhập mã khách hàng">
+                    <br>
+                    <input type="radio" id="nhaDan" name="radio" value="nhaDan" onclick="hide();">
+                    <label for="nhaDan">Nhà dân</label>
+                    <input type="radio" id="doanhNghiep" name="radio" value="doanhNghiep" onclick="show();">
+                    <label for="doanhNghiep">Doanh nghiệp</label>
+                    <br>
+                    <input style="display:none" type="text" id="numberNetwork" placeholder="Nhập số kết nối" value="0">
+                    <input type="text" id="premiumNetwork" placeholder="Nhập số kênh cao cấp">
+                </div>
+            </form>
+            <br>
+            <button class="btn" onclick="calcNetworkCable()">TÍNH </button>
+            <br>   
+                <p class="message-box1" id="message1" style="display:none;">
+                Mã khách hàng:<span id="userCode">...</span><br>
+                Loại hình: <span id="userTypeShow">...</span><br></p>
+                <p class="message-box2" id="message2" style="display:none;">
+                Số kết nối: <span id="countNetwork">không</span><br></p>
+                <p class="message-box3" id="message3" style="display:none;">
+                Số kênh cao cấp: <span id="countPremiumNetwork">...</span><br>
+                Số tiền cần thanh toán là: $<span id="total">...</span>
+                </p>
+        </div>
+    </div>
+    <footer class="footer"><p>Bootcamp 10 - Bài tập JS tính tiền cáp - Thái Duy Khang</p></footer>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>
