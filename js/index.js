@@ -3,23 +3,16 @@
  * 
  * input 
  *  - Mã khách hàng, loại khách hàng
- *  - Số kết nối, kênh cao cấp
+ *  - Hiển thị số kết nối nếu là doanh nghiệp, kênh cao cấp
  *  
  * process:
- *  1. lấy input
- *  2. tính tiền cáp
- *  3. in kết quả ra màn hình
+ *  1. Lấy input
+ *  2. Kiểm tra loại khách hàng
+ *  2. Tính tiền cáp
+ *  3. In kết quả ra màn hình
  * 
  * output: Total
  */
-
-//  function checkUserType(){
-//     var isNhaDan = document.getElementById("nhaDan").checked;
-//     var isDoanhNghiep = document.getElementById("doanhNghiep").checked;
-
-//     if(isNhaDan === true) return "nhaDan";
-//     if(isDoanhNghiep === true) return "doanhNghiep";
-// }
 
 //Hiển thị số kết nối nếu là Doanh nghiệp
 function show(){
@@ -37,15 +30,19 @@ function checkUserType(){
     if(isNhaDan === true) return "nhaDan";
     if(isDoanhNghiep === true) return "doanhNghiep";
 }
-
 // Main
 function calcNetworkCable(){
     var user = document.getElementById("userID").value;
     var userType = checkUserType();
     var countNetwork = +document.getElementById("numberNetwork").value;
     var countPremiumNetwork = +document.getElementById("premiumNetwork").value;
-    var tenNetwork = 75;
-    var moreNetwork = countNetwork * 5;
+    var tenNetwork;
+
+    if (countNetwork <= 10) {
+        tenNetwork = countNetwork * 7.5;
+    } else {
+        tenNetwork = (countNetwork - 10) * 5 + 75;
+    }
     var totalAmount = 0;
 
     switch (userType){
@@ -57,10 +54,11 @@ function calcNetworkCable(){
             document.getElementById("countPremiumNetwork").innerHTML = countPremiumNetwork;
             document.getElementById("total").innerHTML = totalAmount;
             document.getElementById("message1").style.display = "block";
+            document.getElementById("message2").style.display = "none";
             document.getElementById("message3").style.display = "block";
             break;
         case "doanhNghiep":
-            totalAmount = 15 + tenNetwork + moreNetwork + countPremiumNetwork * 50;
+            totalAmount = 15 + tenNetwork + countPremiumNetwork * 50;
             document.getElementById("userCode").innerHTML = user;
             document.getElementById("userTypeShow").innerHTML = userType;
             document.getElementById("countNetwork").innerHTML = countNetwork;
